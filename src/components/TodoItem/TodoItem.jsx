@@ -1,11 +1,11 @@
-import { Draggable } from "react-beautiful-dnd";
+import { Draggable } from "@hello-pangea/dnd"; 
 import { useDispatch } from "react-redux";
 // import { MdClose } from "react-icons/md";
 import { deleteTodo } from "redux/todos/operations";
 import { openModalEditTodo } from "redux/global/slice";
 import { Item, Info, EditButton, DeleteButton } from "./TodoItem.styled";
 
-export const TodoItem = ({ todo }, idx) => {
+export const TodoItem = ({ todo, index }) => {
   const dispatch = useDispatch();
   const handleDelete = () => dispatch(deleteTodo(todo.id));
   const handleEdit = () => dispatch(openModalEditTodo(todo));
@@ -13,7 +13,7 @@ export const TodoItem = ({ todo }, idx) => {
 //   const handleToggle = () => dispatch(toggleCompleted(task.id));
 
   return (
-    <Draggable draggableId={todo.id} index={idx}>
+    <Draggable draggableId={(todo.id).toString()} index={index}>
       {(provided) => (
         <Item
           ref = {provided.innerRef}

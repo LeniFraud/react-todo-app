@@ -1,4 +1,4 @@
-import { DragDropContext } from "react-beautiful-dnd";
+import { DragDropContext } from '@hello-pangea/dnd';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchTodos } from 'redux/todos/operations';

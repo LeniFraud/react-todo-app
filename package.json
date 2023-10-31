@@ -4,6 +4,7 @@
   "private": true,
   "homepage": "https://LeniFraud.github.io/react-todo-app/",
   "dependencies": {
+    "@hello-pangea/dnd": "^16.3.0",
     "@reduxjs/toolkit": "^1.9.7",
     "@testing-library/jest-dom": "^5.16.3",
     "@testing-library/react": "^12.1.4",
@@ -12,7 +13,6 @@
     "formik": "^2.4.5",
     "nanoid": "^5.0.2",
     "react": "^18.1.0",
-    "react-beautiful-dnd": "^13.1.1",
     "react-dom": "^18.1.0",
     "react-icons": "^4.11.0",
     "react-loader-spinner": "^5.4.5",

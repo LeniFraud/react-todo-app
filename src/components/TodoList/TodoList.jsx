@@ -1,4 +1,4 @@
-import { Droppable } from "react-beautiful-dnd";
+import { Droppable } from "@hello-pangea/dnd"; 
 import { useSelector } from "react-redux";
 import { selectTodos, selectIsLoading, selectVisibleTodos } from "redux/todos/selectors";
 import { TodoItem, Notification } from "components";
@@ -19,8 +19,8 @@ export const TodoList = () => {
           ref={provided.innerRef}
           {...provided.droppableProps}
         >
-          {visibleTodos?.map((todo, idx) => (
-            <TodoItem key={todo.id} todo={todo} idx={idx} />
+          {visibleTodos?.map((todo, index) => (
+            <TodoItem key={todo.id} todo={todo} index={index} />
           ))}
           {provided.placeholder}
         </List>
