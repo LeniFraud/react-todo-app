@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { createPortal } from 'react-dom';
-import { ModalMobile, Overlay, ModalBox, CloseButton,  ModalWrapper, Icon } from './ModalContainer.styled';
+import { Overlay, ModalBox, CloseButton, Icon } from './ModalContainer.styled';
+// import { ModalMobile, ModalWrapper } from './ModalContainer.styled';
 import { useDispatch } from 'react-redux';
 import { closeModal } from 'redux/global/slice'; 
 // import { useMediaQuery } from 'react-responsive';

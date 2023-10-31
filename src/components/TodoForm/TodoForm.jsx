@@ -5,7 +5,7 @@ import { nanoid } from 'nanoid';
 // import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addTodo, editTodo } from 'redux/todos/operations'; 
-import { selectTodos } from 'redux/todos/selectors'; 
+// import { selectTodos } from 'redux/todos/selectors'; 
 import { closeModal } from 'redux/global/slice'; 
 import { selectModalTodoData } from "redux/global/selectors";
 import { Form, Label, Input, SaveButton, CancelButton } from './TodoForm.styled';
@@ -15,7 +15,7 @@ import { Form, Label, Input, SaveButton, CancelButton } from './TodoForm.styled'
 export const TodoForm = () => {
   // const [name, setName] = useState('');
   // const [description, setDescription] = useState('');
-  const todos = useSelector(selectTodos);
+  // const todos = useSelector(selectTodos);
   const dispatch = useDispatch();
 
   const modalTodoData = useSelector(selectModalTodoData);

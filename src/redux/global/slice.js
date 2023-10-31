@@ -1,4 +1,5 @@
-import { createSlice, isAnyOf } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
+// import { isAnyOf } from '@reduxjs/toolkit';
 // import {
 //   fetchTransactions,
 //   addTransaction,
@@ -37,19 +38,19 @@ const initialState = {
 
 // const getActions = type => extraActions.map(action => action[type]);
 
-const handlePending = state => {
-  state.isLoading = true;
-};
+// const handlePending = state => {
+//   state.isLoading = true;
+// };
 
-const handleFulfilled = state => {
-  state.isLoading = false;
-  state.error = null;
-};
+// const handleFulfilled = state => {
+//   state.isLoading = false;
+//   state.error = null;
+// };
 
-const handleRejected = (state, { payload }) => {
-  state.isLoading = false;
-  state.error = payload;
-};
+// const handleRejected = (state, { payload }) => {
+//   state.isLoading = false;
+//   state.error = payload;
+// };
 
 const globalSlice = createSlice({
   name: 'global',
