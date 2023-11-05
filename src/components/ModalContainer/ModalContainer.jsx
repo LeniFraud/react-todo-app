@@ -1,6 +1,7 @@
+import { MdClose } from 'react-icons/md';
 import { useEffect } from 'react';
 import { createPortal } from 'react-dom';
-import { Overlay, ModalBox, CloseButton, Icon } from './ModalContainer.styled';
+import { Overlay, ModalBox, CloseButton } from './ModalContainer.styled';
 // import { ModalMobile, ModalWrapper } from './ModalContainer.styled';
 import { useDispatch } from 'react-redux';
 import { closeModal } from 'redux/global/slice'; 
@@ -64,7 +65,7 @@ export const ModalContainer = ({ children }) => {
                   type="button"
                   onClick={() => dispatch(closeModal())}
                 >
-                  <Icon/>
+                  <MdClose size={24} fill="currentColor" />
                 </CloseButton>
                 {children}
               </ModalBox>

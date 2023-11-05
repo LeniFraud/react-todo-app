@@ -1,14 +1,16 @@
+import { Form, Field } from 'formik';
 import styled from 'styled-components';
+import { NavLink as L } from 'react-router-dom';
 
-export const Form = styled.form`
-  width: 320px;
+export const Container = styled.div`
+  max-width: 320px;
   margin: 0 auto;
 `;
 
-export const Label = styled.label`
+export const Link = styled(L)`
   display: flex;
-  flex-direction: column;
-  margin-bottom: ${p => p.theme.space[4]}px;
+  justify-content: flex-end;
+  color: ${p => p.theme.colors.primary};
   transition: color ${p => p.theme.transition.normal};
 
   &:hover,
@@ -17,7 +19,24 @@ export const Label = styled.label`
   }
 `;
 
-export const Input = styled.input`
+export const FormBox = styled(Form)`
+  width: 320px;
+  margin: 0 auto;
+`;
+
+export const Label = styled.label`
+  display: flex;
+  flex-direction: column;
+  margin-top: ${p => p.theme.space[4]}px;
+  transition: color ${p => p.theme.transition.normal};
+
+  &:hover,
+  :focus {
+    color: ${p => p.theme.colors.secondary};
+  }
+`;
+
+export const Input = styled(Field)`
   margin-top: ${p => p.theme.space[3]}px;
   padding-top: ${p => p.theme.space[3]}px;
   padding-bottom: ${p => p.theme.space[3]}px;
@@ -34,11 +53,21 @@ export const Input = styled.input`
   }
 `;
 
+export const ErrorText = styled.p`
+  display: block;
+  margin-top: ${p => p.theme.space[2]}px;
+  font-size: ${p => p.theme.fontSizes.xs}px;
+  color: ${p => p.theme.colors.error};
+`;
+
 export const Button = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 0 auto;
+  margin-top: ${p => p.theme.space[4]}px;
+  margin-bottom: ${p => p.theme.space[0]}px;
+  margin-left: auto;
+  margin-right: auto;
   padding-top: ${p => p.theme.space[3]}px;
   padding-bottom: ${p => p.theme.space[3]}px;
   padding-left: ${p => p.theme.space[4]}px;

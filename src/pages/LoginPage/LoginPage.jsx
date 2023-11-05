@@ -1,11 +1,15 @@
-import { LoginForm } from 'components';
+import { useSelector } from 'react-redux';
+import { selectStatusPending } from 'redux/auth/selectors'; 
+import { LoginForm, Loader } from 'components';
 import { Section, Container } from './LoginPage.styled';
 
 export default function LoginPage() {
+  const isPending = useSelector(selectStatusPending);
+
   return (
     <Section>
       <Container>
-        <LoginForm />
+        {isPending ? <Loader/> : <LoginForm/>}
       </Container>
     </Section>
   );

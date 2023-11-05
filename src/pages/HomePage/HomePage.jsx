@@ -1,5 +1,5 @@
 import { BsArrowDownCircleFill } from 'react-icons/bs';
-import phonebook from './phonebook.png';
+import notebook from './notebook.png';
 import { routes } from 'utils/routes';
 import {
   Section,
@@ -18,7 +18,7 @@ export default function HomePage() {
         <Text>All your tasks are here!</Text>
         <BsArrowDownCircleFill size={32} fill="#f7cd23" />
         <Link to={routes.TODOS}>
-          <Image src={phonebook} alt="Phonebook" />
+          <Image src={notebook} alt="Notebook" />
         </Link>
       </Container>
     </Section>

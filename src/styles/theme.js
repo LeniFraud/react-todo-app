@@ -5,10 +5,12 @@ export const theme = {
     backgroundMain: '#ffffff',
     backgroundLight: '#eaf6fa',
     backgroundDark: '#2d6d8d',
-    backgroundBook: '#ececec',
+    backgroundBookLight: '#ececec',
+    backgroundBookDark: '#c6c6c6',
     primary: '#46b0e3',
     secondary: '#368fb9',
     accent: '#f7cd23',
+    error: 'tomato',
   },
   space: [0, 2, 4, 8, 16, 32, 64, 128, 256],
   fonts: {

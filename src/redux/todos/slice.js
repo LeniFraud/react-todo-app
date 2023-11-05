@@ -31,6 +31,9 @@ const todosSlice = createSlice({
     filterChange: (state, action) => {
       state.filter = action.payload;
     },
+    orderChange: (state, action) => {
+      state.todos.items = action.payload;
+    },
   },
 
   extraReducers: builder => {
@@ -74,4 +77,4 @@ const persistConfig = {
 
 export const todosReducer = persistReducer(persistConfig, todosSlice.reducer);
 
-export const { filterChange } = todosSlice.actions;
+export const { filterChange, orderChange } = todosSlice.actions;

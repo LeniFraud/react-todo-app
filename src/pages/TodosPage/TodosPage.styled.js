@@ -10,15 +10,15 @@ export const Container = styled.div`
   margin: 0 auto;
 `;
 
-export const Title = styled.h2`
-  margin-bottom: ${p => p.theme.space[4]}px;
-  color: ${p => p.theme.colors.accent};
-  text-align: center;
-  font-family: ${p => p.theme.fonts.heading};
-  font-size: ${p => p.theme.fontSizes.xl}px;
-`;
+// export const Title = styled.h2`
+//   margin-bottom: ${p => p.theme.space[4]}px;
+//   color: ${p => p.theme.colors.accent};
+//   text-align: center;
+//   font-family: ${p => p.theme.fonts.heading};
+//   font-size: ${p => p.theme.fontSizes.xl}px;
+// `;
 
-export const Subtitle = styled.h3`
+export const Title = styled.h2`
   margin-bottom: ${p => p.theme.space[4]}px;
   color: ${p => p.theme.colors.secondary};
   text-align: center;
@@ -30,12 +30,16 @@ export const Button = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: 0;
+  margin-bottom: ${p => p.theme.space[5]}px;
+  margin-left: auto;
+  /* margin-right: auto; */
   padding-top: ${p => p.theme.space[3]}px;
   padding-bottom: ${p => p.theme.space[3]}px;
   padding-left: ${p => p.theme.space[4]}px;
   padding-right: ${p => p.theme.space[4]}px;
   color: ${p => p.theme.colors.textLight};
-  font-size: ${p => p.theme.fontSizes.s}px;
+  font-size: ${p => p.theme.fontSizes.m}px;
   background-color: ${p => p.theme.colors.primary};
   border: ${p => p.theme.borders.none};
   border-radius: ${p => p.theme.radii.normal};

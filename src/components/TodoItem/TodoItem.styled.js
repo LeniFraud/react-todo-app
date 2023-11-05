@@ -1,50 +1,92 @@
 import styled from 'styled-components';
 
 export const Item = styled.li`
+  position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 12px 20px;
+  padding-top: ${p => p.theme.space[3]}px;
+  padding-bottom: ${p => p.theme.space[3]}px;
+  padding-left: ${p => p.theme.space[5]}px;
+  padding-right: ${p => p.theme.space[5]}px;
+  background-color: ${p =>
+    p.isDragging
+      ? p.theme.colors.backgroundLight
+      : p.theme.colors.backgroundMain};
+  border-radius: ${p => p.theme.radii.medium};
+  box-shadow: ${p => p.theme.shadows.accent};
+  transition: background-color ${p => p.theme.transition.normal};
 
-  &:nth-child(even) {
-    background-color: #fff;
+  &:not(:last-child) {
+    margin-bottom: ${p => p.theme.space[4]}px;
+  }
+
+  &::after {
+    position: absolute;
+    left: 0;
+    content: '';
+    height: 100%;
+    width: ${p => p.theme.space[3]}px;
+    border-bottom-left-radius: ${p => p.theme.radii.medium};
+    border-top-left-radius: ${p => p.theme.radii.medium};
+    background-color: ${p => p.theme.colors.accent};
   }
 `;
 
 export const Info = styled.div`
-  display: flex;
-  flex-direction: column;
+  /* display: flex; */
+  /* justify-content: space-between; */
   width: 100%;
-  font-size: 20px;
+  font-size: ${p => p.theme.fontSizes.s}px;
 `;
 
-export const EditButton = styled.button`
+export const Name = styled.p`
+  font-weight: ${p => p.theme.fontWeights.bold};
+`;
+
+export const Description = styled.p`
+  font-weight: ${p => p.theme.fontWeights.medium};
+`;
+
+export const Created = styled.p`
+  font-size: ${p => p.theme.fontSizes.xs}px;
+  font-weight: ${p => p.theme.fontWeights.normal};
+`;
+
+export const Updated = styled.p`
+  font-size: ${p => p.theme.fontSizes.xs}px;
+  font-weight: ${p => p.theme.fontWeights.normal};
+`;
+
+export const Button = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  min-width: 80px;
-  height: 40px;
-  margin-left: 40px;
-  background-color: #99ffdd;
-  border: none;
-  border-radius: 4px;
-  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06),
-    1px 4px 6px rgba(0, 0, 0, 0.16);
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
-    transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  margin-left: ${p => p.theme.space[4]}px;
+  padding-top: ${p => p.theme.space[3]}px;
+  padding-bottom: ${p => p.theme.space[3]}px;
+  padding-left: ${p => p.theme.space[3]}px;
+  padding-right: ${p => p.theme.space[3]}px;
+  color: ${p => p.theme.colors.textLight};
+  background-color: ${p => p.theme.colors.primary};
+  border: ${p => p.theme.borders.none};
+  border-radius: ${p => p.theme.radii.normal};
+  box-shadow: ${p => p.theme.shadows.normal};
+  transition: background-color ${p => p.theme.transition.normal},
+    box-shadow ${p => p.theme.transition.normal};
 
   &:hover,
   :focus {
-    background-color: #42ffc0;
-    transform: scale(1.05);
+    background-color: ${p => p.theme.colors.secondary};
+    box-shadow: ${p => p.theme.shadows.accent};
   }
 `;
 
-export const DeleteButton = styled(EditButton)`
-  background-color: #ffcab8;
+// export const DeleteButton = styled(EditButton)`
+//   background-color: #ffcab8;
 
-  &:hover,
-  :focus {
-    background-color: #ff9c7a;
-  }
-`;
+//   &:hover,
+//   :focus {
+//     background-color: #ff9c7a;
+//   }
+// `;

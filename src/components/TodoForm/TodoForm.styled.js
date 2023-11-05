@@ -1,7 +1,15 @@
-// import { Form, Field } from 'formik';
+import { Form, Field } from 'formik';
 import styled from 'styled-components';
 
-export const Form = styled.form`
+export const Title = styled.h3`
+  margin-bottom: ${p => p.theme.space[4]}px;
+  color: ${p => p.theme.colors.accent};
+  text-align: center;
+  font-family: ${p => p.theme.fonts.heading};
+  font-size: ${p => p.theme.fontSizes.l}px;
+`;
+
+export const FormBox = styled(Form)`
   display: flex;
   flex-direction: column;
   align-items: flex-end;
@@ -11,7 +19,7 @@ export const Form = styled.form`
   padding-bottom: ${p => p.theme.space[4]}px;
   padding-left: ${p => p.theme.space[5]}px;
   padding-right: ${p => p.theme.space[5]}px;
-  background-color: ${p => p.theme.colors.backgroundBook};
+  background-color: ${p => p.theme.colors.backgroundBookLight};
   border-radius: ${p => p.theme.radii.medium};
   box-shadow: ${p => p.theme.shadows.normal};
 `;
@@ -29,7 +37,7 @@ export const Label = styled.label`
   }
 `;
 
-export const Input = styled.input`
+export const Input = styled(Field)`
   min-width: 280px;
   margin-left: ${p => p.theme.space[4]}px;
   padding-top: ${p => p.theme.space[3]}px;
@@ -45,6 +53,11 @@ export const Input = styled.input`
   :focus {
     border-color: ${p => p.theme.colors.secondary};
   }
+`;
+
+export const ErrorText = styled.p`
+  font-size: ${p => p.theme.fontSizes.xs}px;
+  color: ${p => p.theme.colors.error};
 `;
 
 export const SaveButton = styled.button`

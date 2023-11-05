@@ -1,35 +1,64 @@
+import { Formik, ErrorMessage } from 'formik';
+import * as Yup from 'yup';
 import { useDispatch } from 'react-redux';
 import { logIn } from 'redux/auth/operations';
-import { Form, Label, Input, Button } from './LoginForm.styled';
+import { routes } from 'utils/routes';
+import { Container, Link, FormBox, Label, Input, ErrorText, Button } from './LoginForm.styled';
+
+const schema = Yup.object({
+  name: Yup.string().max(15, 'Name cannot exceed more than 15 characters').required('Required'),
+  email: Yup.string().email('Invalid email address').required('Required'),
+  password: Yup.string().min(6, 'Password must be 6 characters or more').required('Required'),
+});
+
+const FormError = ({name}) => {
+  return (
+    <ErrorMessage
+      name={name}
+      render={message => <ErrorText>{message}</ErrorText>}
+    />
+  )
+};
 
 export const LoginForm = () => {
   const dispatch = useDispatch();
 
-  const handleSubmit = e => {
-    e.preventDefault();
-    const form = e.currentTarget;
-    // console.log('login')
-    dispatch(
-      logIn({
-        name: 'User',
-        email: form.elements.email.value,
-        password: form.elements.password.value,
-      })
-    );
-    form.reset();
+  const initialValues = {
+    name: '',
+    email: '',
+    password: '',
+  };
+
+  const handleSubmit = (values, {resetForm}) => {
+    dispatch(logIn(values));
+    resetForm();
   };
 
   return (
-    <Form onSubmit={handleSubmit} autoComplete="off">
-      <Label>
-        Email
-        <Input type="email" name="email" required />
-      </Label>
-      <Label>
-        Password
-        <Input type="password" name="password" minLength={7} required />
-      </Label>
-      <Button type="submit">Log In</Button>
-    </Form>
+    <Container>
+      <Link to={routes.REGISTER_REDIRECT}>
+        Registration
+      </Link>
+      <Formik initialValues={initialValues} validationSchema={schema} onSubmit={handleSubmit}>
+        <FormBox>
+          <Label>
+            Name
+            <Input name="name" type="text" />
+          </Label>
+          <FormError name="name"/>
+          <Label>
+            Email
+            <Input name="email" type="email" />
+          </Label>
+          <FormError name="email"/>
+          <Label>
+            Password
+            <Input name="password" type="password" />
+          </Label>
+          <FormError name="password"/>
+          <Button type="submit">Log In</Button>
+        </FormBox>
+      </Formik>
+    </Container>
   );
 };
