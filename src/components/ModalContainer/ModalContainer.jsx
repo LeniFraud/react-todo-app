@@ -2,17 +2,13 @@ import { MdClose } from 'react-icons/md';
 import { useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { Overlay, ModalBox, CloseButton } from './ModalContainer.styled';
-// import { ModalMobile, ModalWrapper } from './ModalContainer.styled';
 import { useDispatch } from 'react-redux';
-import { closeModal } from 'redux/global/slice'; 
-// import { useMediaQuery } from 'react-responsive';
-// import { Header } from 'components/Header/Header';
+import { closeModal } from 'redux/global/slice';
 
 const modalRoot = document.getElementById('modal-root');
 
 export const ModalContainer = ({ children }) => {
   const dispatch = useDispatch();
-  // const isMobile = useMediaQuery({ query: '(max-width: 767.98px)' });
 
   useEffect(() => {
     const onEscapeClick = e => {
@@ -32,45 +28,15 @@ export const ModalContainer = ({ children }) => {
     if (e.target === e.currentTarget) dispatch(closeModal());
   };
 
-  return (
-    // <>
-    //   {isMobile
-    //     ? createPortal(
-    //         <ModalMobile>
-    //           <Header />
-    //           <ModalWrapper>{children}</ModalWrapper>
-    //         </ModalMobile>,
-    //         modalRoot
-    //       )
-    //     : createPortal(
-    //         <Overlay onClick={onOverlayClick}>
-    //           <ModalBox>
-    //             <CloseButton
-    //               type="button"
-    //               onClick={() => dispatch(closeModal())}
-    //             >
-    //               <Icon />
-    //             </CloseButton>
-    //             {children}
-    //           </ModalBox>
-    //         </Overlay>,
-    //         modalRoot
-    //       )}
-    // </>
-    
-    createPortal(
-            <Overlay onClick={onOverlayClick}>
-              <ModalBox>
-                <CloseButton
-                  type="button"
-                  onClick={() => dispatch(closeModal())}
-                >
-                  <MdClose size={24} fill="currentColor" />
-                </CloseButton>
-                {children}
-              </ModalBox>
-            </Overlay>,
-            modalRoot
-          )
+  return createPortal(
+    <Overlay onClick={onOverlayClick}>
+      <ModalBox>
+        <CloseButton type="button" onClick={() => dispatch(closeModal())}>
+          <MdClose size={24} fill="currentColor" />
+        </CloseButton>
+        {children}
+      </ModalBox>
+    </Overlay>,
+    modalRoot
   );
 };

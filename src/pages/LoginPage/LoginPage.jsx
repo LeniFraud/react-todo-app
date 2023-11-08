@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import { selectStatusPending } from 'redux/auth/selectors'; 
+import { selectStatusPending } from 'redux/global/selectors';
 import { LoginForm, Loader } from 'components';
 import { Section, Container } from './LoginPage.styled';
 
@@ -8,9 +8,7 @@ export default function LoginPage() {
 
   return (
     <Section>
-      <Container>
-        {isPending ? <Loader/> : <LoginForm/>}
-      </Container>
+      <Container>{isPending ? <Loader /> : <LoginForm />}</Container>
     </Section>
   );
 }

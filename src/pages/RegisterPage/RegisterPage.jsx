@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import { selectStatusPending } from 'redux/auth/selectors'; 
+import { selectStatusPending } from 'redux/global/selectors';
 import { RegisterForm, Loader } from 'components';
 import { Section, Container } from './RegisterPage.styled';
 
@@ -8,9 +8,7 @@ export default function RegisterPage() {
 
   return (
     <Section>
-      <Container>
-      {isPending ? <Loader/> : <RegisterForm/>}
-      </Container>
+      <Container>{isPending ? <Loader /> : <RegisterForm />}</Container>
     </Section>
   );
 }

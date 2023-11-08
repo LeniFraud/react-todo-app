@@ -13,6 +13,8 @@ import { fakePending } from 'utils/fakeRequests';
 //   axios.defaults.headers.common.Authorization = '';
 // };
 
+/* Web-token imitation */
+
 const setAuthHeader = userData => {
   const data = {
     user: { name: userData.name, email: userData.email },
@@ -20,10 +22,6 @@ const setAuthHeader = userData => {
   };
   return data;
 };
-
-// const clearAuthHeader = () => {
-//   axios.defaults.headers.common.Authorization = '';
-// };
 
 /*
  * POST @ /users/signup
@@ -36,7 +34,6 @@ export const register = createAsyncThunk(
       // const { data } = await axios.post('/users/signup', credentials);
       // setAuthHeader(data.token);
       // return data;
-      // console.log(credentials);
       await fakePending();
       const data = setAuthHeader(credentials);
       return data;
@@ -88,7 +85,6 @@ export const refreshUser = createAsyncThunk(
   'auth/refresh',
   async (_, thunkAPI) => {
     const state = thunkAPI.getState();
-    // console.log(state);
     const persistedToken = state.authData.token;
     const persistedData = state.authData.user;
 

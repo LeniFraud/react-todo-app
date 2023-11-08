@@ -57,7 +57,7 @@ export const ErrorText = styled.p`
   display: block;
   margin-top: ${p => p.theme.space[2]}px;
   font-size: ${p => p.theme.fontSizes.xs}px;
-  color: ${p => p.theme.colors.error};
+  color: ${p => p.theme.colors.errorDark};
 `;
 
 export const Button = styled.button`

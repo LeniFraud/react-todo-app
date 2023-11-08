@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux';
-import { filterChange } from 'redux/todos/slice'; 
+import { filterChange } from 'redux/todos/slice';
 import { Label, Input } from './Filter.styled';
 
 export const Filter = () => {

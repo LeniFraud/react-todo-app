@@ -3,71 +3,57 @@ import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import { register, logIn, logOut, refreshUser } from './operations';
 
-const handlePending = state => {
-  state.status = 'pending';
-  state.error = null;
-};
-
-const handleRejected = (state, action) => {
-  state.status = 'rejected';
-  state.error = action.payload;
-};
-
 const initialState = {
   user: {
     name: null,
     email: null,
   },
   token: null,
+  avatar: null,
+  avatarSrc: null,
   isLoggedIn: false,
-  status: 'idle', // 'idle' | 'pending' | 'resolved' | 'rejected'
-  error: null,
   isRefreshing: false,
 };
 
 const authSlice = createSlice({
   name: 'auth',
   initialState,
+
+  reducers: {
+    addAvatar(state, action) {
+      state.avatar = action.payload;
+    },
+    setAvatarSrc(state, action) {
+      state.avatarSrc = action.payload;
+    },
+  },
+
   extraReducers: builder => {
     builder
-      .addCase(register.pending, handlePending)
-      .addCase(register.fulfilled, (state, action) => {
-        state.status = 'resolved';
-        state.user = action.payload.user;
-        state.token = action.payload.token;
+      .addCase(register.fulfilled, (state, { payload }) => {
+        state.user = payload.user;
+        state.token = payload.token;
         state.isLoggedIn = true;
       })
-      .addCase(register.rejected, handleRejected)
-      .addCase(logIn.pending, handlePending)
-      .addCase(logIn.fulfilled, (state, action) => {
-        state.status = 'resolved';
-        state.user = action.payload.user;
-        state.token = action.payload.token;
+      .addCase(logIn.fulfilled, (state, { payload }) => {
+        state.user = payload.user;
+        state.token = payload.token;
         state.isLoggedIn = true;
       })
-      .addCase(logIn.rejected, handleRejected)
-      .addCase(logOut.pending, handlePending)
       .addCase(logOut.fulfilled, state => {
-        state.status = 'resolved';
         state.user = { name: null, email: null };
         state.token = null;
         state.isLoggedIn = false;
       })
-      .addCase(logOut.rejected, handleRejected)
       .addCase(refreshUser.pending, state => {
-        state.status = 'pending';
-        state.error = null;
         state.isRefreshing = true;
       })
-      .addCase(refreshUser.fulfilled, (state, action) => {
-        state.status = 'resolved';
-        state.user = action.payload;
+      .addCase(refreshUser.fulfilled, (state, { payload }) => {
+        state.user = payload;
         state.isLoggedIn = true;
         state.isRefreshing = false;
       })
-      .addCase(refreshUser.rejected, (state, action) => {
-        state.status = 'rejected';
-        state.error = action.payload;
+      .addCase(refreshUser.rejected, state => {
         state.isRefreshing = false;
       });
   },
@@ -78,5 +64,7 @@ const persistConfig = {
   storage,
   whitelist: ['user', 'token'],
 };
+
+export const { addAvatar, setAvatarSrc } = authSlice.actions;
 
 export const authReducer = persistReducer(persistConfig, authSlice.reducer);

@@ -7,3 +7,5 @@ export * from './Filter/Filter';
 export * from './Notification/Notification';
 export * from './LoginForm/LoginForm';
 export * from './RegisterForm/RegisterForm';
+export * from './AvatarCropper/AvatarCropper';
+export * from './CustomAvatar/CustomAvatar';

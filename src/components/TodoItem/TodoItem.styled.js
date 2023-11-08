@@ -10,7 +10,7 @@ export const Item = styled.li`
   padding-left: ${p => p.theme.space[5]}px;
   padding-right: ${p => p.theme.space[5]}px;
   background-color: ${p =>
-    p.isDragging
+    p.$isDragging
       ? p.theme.colors.backgroundLight
       : p.theme.colors.backgroundMain};
   border-radius: ${p => p.theme.radii.medium};
@@ -34,8 +34,6 @@ export const Item = styled.li`
 `;
 
 export const Info = styled.div`
-  /* display: flex; */
-  /* justify-content: space-between; */
   width: 100%;
   font-size: ${p => p.theme.fontSizes.s}px;
 `;
@@ -81,12 +79,3 @@ export const Button = styled.button`
     box-shadow: ${p => p.theme.shadows.accent};
   }
 `;
-
-// export const DeleteButton = styled(EditButton)`
-//   background-color: #ffcab8;
-
-//   &:hover,
-//   :focus {
-//     background-color: #ff9c7a;
-//   }
-// `;

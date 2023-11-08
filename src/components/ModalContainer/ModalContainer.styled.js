@@ -1,26 +1,5 @@
 import styled from 'styled-components';
 
-export const ModalMobile = styled.div`
-  position: fixed;
-  top: 0;
-  left: 50%;
-  width: 100%;
-  height: 100vh;
-  z-index: 100;
-  overflow-y: scroll;
-  background-color: ${p => p.theme.colors.backgroundMain};
-  transform: translateX(-50%);
-`;
-
-export const ModalWrapper = styled.div`
-  margin: 0 auto;
-  padding: ${p => p.theme.space[4]}px;
-
-  /* @media screen and (max-width: 767.98px) {
-    max-width: 480px;
-  } */
-`;
-
 export const Overlay = styled.div`
   position: fixed;
   top: 0;
@@ -36,8 +15,8 @@ export const Overlay = styled.div`
 
 export const ModalBox = styled.div`
   position: relative;
-  min-width: 540px;
-  min-height: 508px;
+  min-width: 500px;
+  min-height: 500px;
   padding: ${p => p.theme.space[5]}px;
   background-color: ${p => p.theme.colors.backgroundMain};
   border-radius: ${p => p.theme.radii.medium};

@@ -1,12 +1,25 @@
 import { DragDropContext } from '@hello-pangea/dnd';
+import { Bounce, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { orderChange } from 'redux/todos/slice'; 
+import { orderChange } from 'redux/todos/slice';
 import { fetchTodos } from 'redux/todos/operations';
-import { selectTodos, selectIsLoading, selectError, selectVisibleTodos } from 'redux/todos/selectors';
-import { selectModalAddTodoOpen } from 'redux/global/selectors';
-import { openModalAddTodo } from 'redux/global/slice'; 
-import { ModalContainer, TodoList, TodoForm, Filter, Loader, Notification } from 'components'; 
+import { selectTodos, selectVisibleTodos } from 'redux/todos/selectors';
+import {
+  selectModalAddTodoOpen,
+  selectError,
+  selectIsLoading,
+} from 'redux/global/selectors';
+import { openModalAddTodo } from 'redux/global/slice';
+import {
+  ModalContainer,
+  TodoList,
+  TodoForm,
+  Filter,
+  Loader,
+  Notification,
+} from 'components';
 import { Section, Container, Title, Button } from './TodosPage.styled';
 
 export default function TodoPage() {
@@ -28,34 +41,29 @@ export default function TodoPage() {
     return result;
   };
 
-  const onDragEnd = (result) => {
-    // dropped outside the list
+  const onDragEnd = result => {
     if (!result.destination) {
       return;
     }
-    const items = reorder(
-      todos,
-      result.source.index,
-      result.destination.index
-    );
+    const items = reorder(todos, result.source.index, result.destination.index);
     dispatch(orderChange(items));
   };
 
   return (
     <Section>
       <Container>
-        {/* <Title>Todo App</Title> */}
         <Title>Todos</Title>
         <Button
-          type='submit'
+          type="submit"
           aria-label="Add todo"
-          onClick={() => dispatch(openModalAddTodo())}>Add todo
+          onClick={() => dispatch(openModalAddTodo())}
+        >
+          Add todo
         </Button>
         {!!todos.length && <Filter />}
         {isLoading && <Loader />}
         <DragDropContext onDragEnd={onDragEnd}>
-          {/* {!!todos.length && !isLoading && <TodoList/>} */}
-          {!!todos.length && <TodoList/>}
+          {!!todos.length && <TodoList />}
         </DragDropContext>
         {error && <Notification message="Ooops! Something went wrong..." />}
         {!isLoading && todos?.length === 0 && (
@@ -64,20 +72,20 @@ export default function TodoPage() {
         {!!todos.length && !visibleTodos.length && (
           <Notification message="No tasks found..." />
         )}
-          {/* {!error ? (
-            <DragDropContext onDragEnd={onDragEnd}>
-              <Subtitle>Todos</Subtitle>
-              <TodoList />
-            </DragDropContext>
-          ) : (
-          <Notification message="Ooops! Something went wrong..." />
-          )} */}
         {isModalAddTodoOpen && (
           <ModalContainer>
-            <TodoForm/>
+            <TodoForm />
           </ModalContainer>
         )}
+        <ToastContainer
+          style={{
+            marginTop: 70,
+          }}
+          autoClose={2000}
+          transition={Bounce}
+          theme="colored"
+        />
       </Container>
     </Section>
   );
-};
+}

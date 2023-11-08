@@ -6,6 +6,11 @@ export const Wrapper = styled.div`
   gap: ${p => p.theme.space[3]}px;
 `;
 
+export const AvatarBox = styled.div`
+  border-radius: ${p => p.theme.radii.round};
+  overflow: hidden;
+`;
+
 export const Avatar = styled.img`
   width: 48px;
 `;

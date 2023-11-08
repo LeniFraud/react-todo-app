@@ -10,7 +10,8 @@ export const theme = {
     primary: '#46b0e3',
     secondary: '#368fb9',
     accent: '#f7cd23',
-    error: 'tomato',
+    errorLight: '#ffcab8',
+    errorDark: '#ff9c7a',
   },
   space: [0, 2, 4, 8, 16, 32, 64, 128, 256],
   fonts: {
@@ -23,6 +24,7 @@ export const theme = {
     xs: 14,
     s: 16,
     m: 20,
+    xm: 26,
     l: 32,
     xl: 48,
     xxl: 60,

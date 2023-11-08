@@ -10,14 +10,6 @@ export const Container = styled.div`
   margin: 0 auto;
 `;
 
-// export const Title = styled.h2`
-//   margin-bottom: ${p => p.theme.space[4]}px;
-//   color: ${p => p.theme.colors.accent};
-//   text-align: center;
-//   font-family: ${p => p.theme.fonts.heading};
-//   font-size: ${p => p.theme.fontSizes.xl}px;
-// `;
-
 export const Title = styled.h2`
   margin-bottom: ${p => p.theme.space[4]}px;
   color: ${p => p.theme.colors.secondary};
@@ -33,7 +25,6 @@ export const Button = styled.button`
   margin-top: 0;
   margin-bottom: ${p => p.theme.space[5]}px;
   margin-left: auto;
-  /* margin-right: auto; */
   padding-top: ${p => p.theme.space[3]}px;
   padding-bottom: ${p => p.theme.space[3]}px;
   padding-left: ${p => p.theme.space[4]}px;
