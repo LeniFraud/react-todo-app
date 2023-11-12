@@ -81,10 +81,10 @@ export const TodoForm = () => {
             <FormError name="description" />
           </FormBox>
           <ButtonBox>
-            <SaveButton type="submit">Save</SaveButton>
             <CancelButton type="button" onClick={() => dispatch(closeModal())}>
               Cancel
             </CancelButton>
+            <SaveButton type="submit">Save</SaveButton>
           </ButtonBox>
         </Form>
       </Formik>

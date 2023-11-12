@@ -66,7 +66,7 @@ export const SaveButton = styled.button`
 `;
 
 export const CancelButton = styled(SaveButton)`
-  margin-left: ${p => p.theme.space[4]}px;
+  margin-right: ${p => p.theme.space[4]}px;
   background-color: ${p => p.theme.colors.errorLight};
 
   &:hover,

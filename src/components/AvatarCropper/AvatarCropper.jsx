@@ -48,15 +48,15 @@ export const AvatarCropper = () => {
         onChange={e => setSlideValue(e.target.value)}
       />
       <ButtonBox>
-        <SaveButton type="submit" onClick={handleSave}>
-          Save
-        </SaveButton>
         <CancelButton
           type="button"
           onClick={() => dispatch(closeModalEditAvatar())}
         >
           Cancel
         </CancelButton>
+        <SaveButton type="submit" onClick={handleSave}>
+          Save
+        </SaveButton>
       </ButtonBox>
     </Wrapper>
   );

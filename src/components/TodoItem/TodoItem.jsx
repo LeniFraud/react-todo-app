@@ -8,6 +8,7 @@ import {
   Info,
   Name,
   Description,
+  DateBox,
   Created,
   Updated,
   Button,
@@ -33,8 +34,15 @@ export const TodoItem = ({ todo, index }) => {
           <Info>
             <Name>{name}</Name>
             <Description>{description}</Description>
-            <Created>Created: {createdDate}</Created>
-            {!dateComparison && <Updated>Updated: {updatedDate}</Updated>}
+            <DateBox>
+              {/* <Created>Created: {createdDate}</Created>
+              {!dateComparison && <Updated>Updated: {updatedDate}</Updated>} */}
+              {dateComparison ? (
+                <Created>Created: {createdDate}</Created>
+              ) : (
+                <Updated>Updated: {updatedDate}</Updated>
+              )}
+            </DateBox>
           </Info>
           <Button type="button" aria-label="Edit todo" onClick={handleEdit}>
             <MdEdit size={24} fill="currentColor" />

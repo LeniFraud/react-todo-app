@@ -1,17 +1,17 @@
 import { DragDropContext } from '@hello-pangea/dnd';
 import { Bounce, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { orderChange } from 'redux/todos/slice';
 import { fetchTodos } from 'redux/todos/operations';
 import { selectTodos, selectVisibleTodos } from 'redux/todos/selectors';
+import { openModalAddTodo } from 'redux/global/slice';
 import {
   selectModalAddTodoOpen,
   selectError,
   selectIsLoading,
 } from 'redux/global/selectors';
-import { openModalAddTodo } from 'redux/global/slice';
 import {
   ModalContainer,
   TodoList,
@@ -19,6 +19,7 @@ import {
   Filter,
   Loader,
   Notification,
+  TopButton,
 } from 'components';
 import { Section, Container, Title, Button } from './TodosPage.styled';
 
@@ -29,10 +30,18 @@ export default function TodoPage() {
   const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
   const isModalAddTodoOpen = useSelector(selectModalAddTodoOpen);
+  const [showTopBtn, setShowTopBtn] = useState(false);
 
   useEffect(() => {
     dispatch(fetchTodos());
   }, [dispatch]);
+
+  useEffect(() => {
+    window.addEventListener('scroll', onWindowScroll);
+    return () => {
+      window.removeEventListener('scroll', onWindowScroll);
+    };
+  }, []);
 
   const reorder = (list, startIndex, endIndex) => {
     const result = Array.from(list);
@@ -47,6 +56,12 @@ export default function TodoPage() {
     }
     const items = reorder(todos, result.source.index, result.destination.index);
     dispatch(orderChange(items));
+  };
+
+  const onWindowScroll = () => {
+    document.documentElement.scrollTop > 20
+      ? setShowTopBtn(true)
+      : setShowTopBtn(false);
   };
 
   return (
@@ -77,6 +92,7 @@ export default function TodoPage() {
             <TodoForm />
           </ModalContainer>
         )}
+        {showTopBtn && <TopButton />}
         <ToastContainer
           style={{
             marginTop: 70,

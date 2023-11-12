@@ -16,7 +16,7 @@ export const Overlay = styled.div`
 export const ModalBox = styled.div`
   position: relative;
   min-width: 500px;
-  min-height: 500px;
+  min-height: 300px;
   padding: ${p => p.theme.space[5]}px;
   background-color: ${p => p.theme.colors.backgroundMain};
   border-radius: ${p => p.theme.radii.medium};

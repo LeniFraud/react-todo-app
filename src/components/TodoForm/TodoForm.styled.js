@@ -6,14 +6,14 @@ export const Title = styled.h3`
   color: ${p => p.theme.colors.accent};
   text-align: center;
   font-family: ${p => p.theme.fonts.heading};
-  font-size: ${p => p.theme.fontSizes.m}px;
+  font-size: ${p => p.theme.fontSizes.xm}px;
 `;
 
 export const FormBox = styled.div`
   display: flex;
   flex-direction: column;
   gap: ${p => p.theme.space[4]}px;
-  margin-bottom: ${p => p.theme.space[6]}px;
+  margin-bottom: ${p => p.theme.space[5]}px;
   padding-top: ${p => p.theme.space[4]}px;
   padding-bottom: ${p => p.theme.space[5]}px;
   padding-left: ${p => p.theme.space[5]}px;
@@ -27,7 +27,7 @@ export const Label = styled.label`
   display: flex;
   flex-direction: column;
   font-size: ${p => p.theme.fontSizes.m}px;
-  font-weight: ${p => p.theme.fontWeights.medium};
+  font-weight: ${p => p.theme.fontWeights.bold};
   transition: color ${p => p.theme.transition.normal};
 
   &:hover,
@@ -43,11 +43,12 @@ export const Input = styled(Field)`
   padding-bottom: ${p => p.theme.space[3]}px;
   padding-left: ${p => p.theme.space[4]}px;
   padding-right: ${p => p.theme.space[4]}px;
-  font-size: ${p => p.theme.fontSizes.xm}px;
+  font-size: ${p => p.theme.fontSizes.m}px;
   color: ${p => p.theme.colors.textDark};
   outline: none;
   border: ${p => p.theme.borders.normal};
   border-radius: ${p => p.theme.radii.normal};
+  opacity: ${p => p.theme.opacities.normal};
   transition: border-color ${p => p.theme.transition.normal},
     color ${p => p.theme.transition.normal};
 
@@ -95,7 +96,7 @@ export const SaveButton = styled.button`
 `;
 
 export const CancelButton = styled(SaveButton)`
-  margin-left: ${p => p.theme.space[5]}px;
+  margin-right: ${p => p.theme.space[5]}px;
   background-color: ${p => p.theme.colors.errorLight};
 
   &:hover,

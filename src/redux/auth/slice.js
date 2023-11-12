@@ -7,9 +7,9 @@ const initialState = {
   user: {
     name: null,
     email: null,
+    avatar: null,
   },
   token: null,
-  avatar: null,
   avatarSrc: null,
   isLoggedIn: false,
   isRefreshing: false,
@@ -20,28 +20,29 @@ const authSlice = createSlice({
   initialState,
 
   reducers: {
-    addAvatar(state, action) {
-      state.avatar = action.payload;
+    addAvatar(state, { payload }) {
+      state.user.avatar = payload;
+      state.avatarSrc = null;
     },
-    setAvatarSrc(state, action) {
-      state.avatarSrc = action.payload;
+    setAvatarSrc(state, { payload }) {
+      state.avatarSrc = payload;
     },
   },
 
   extraReducers: builder => {
     builder
       .addCase(register.fulfilled, (state, { payload }) => {
-        state.user = payload.user;
+        state.user = { ...state.user, ...payload.user };
         state.token = payload.token;
         state.isLoggedIn = true;
       })
       .addCase(logIn.fulfilled, (state, { payload }) => {
-        state.user = payload.user;
+        state.user = { ...state.user, ...payload.user };
         state.token = payload.token;
         state.isLoggedIn = true;
       })
       .addCase(logOut.fulfilled, state => {
-        state.user = { name: null, email: null };
+        state.user = { name: null, email: null, avatar: null };
         state.token = null;
         state.isLoggedIn = false;
       })

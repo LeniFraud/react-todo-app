@@ -46,15 +46,17 @@ export const Description = styled.p`
   font-weight: ${p => p.theme.fontWeights.medium};
 `;
 
-export const Created = styled.p`
+export const DateBox = styled.div`
+  margin-top: ${p => p.theme.space[3]}px;
   font-size: ${p => p.theme.fontSizes.xs}px;
   font-weight: ${p => p.theme.fontWeights.normal};
+  font-style: italic;
+  opacity: ${p => p.theme.opacities.normal};
 `;
 
-export const Updated = styled.p`
-  font-size: ${p => p.theme.fontSizes.xs}px;
-  font-weight: ${p => p.theme.fontWeights.normal};
-`;
+export const Created = styled.p``;
+
+export const Updated = styled.p``;
 
 export const Button = styled.button`
   display: flex;
